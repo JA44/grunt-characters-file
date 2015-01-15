@@ -1,5 +1,6 @@
 # grunt-characters-file
 
+
 > get the characters number file
 
 ## Getting Started
@@ -26,7 +27,7 @@ In your project's Gruntfile, add a section named `characters_file` to the data o
 grunt.initConfig({
   characters_file: {
     options: {
-      // Task-specific options go here.
+     	alertIfHigher: 10000
     },
     your_target: {
       // Target-specific file lists and/or options go here.
@@ -37,47 +38,40 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.alertIfHigher
+Type: `Number`
+Default value: `Number.POSITIVE_INFINITY`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+Send an error if a file is higher that the specify value
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+
+Show the number of characters for all javascript file in /tmp
 
 ```js
 grunt.initConfig({
   characters_file: {
     options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    src: {
+      '/tmp/*.js',
     },
   },
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+
+Show the number of characters for all javascript file in /tmp and alert if the file exceeds the characters limit
 
 ```js
 grunt.initConfig({
   characters_file: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+	alertIfHigher: 10000
     },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+    src: '/tmp/*.js',
   },
 });
 ```
@@ -86,4 +80,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
