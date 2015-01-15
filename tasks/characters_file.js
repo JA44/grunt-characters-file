@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             }).forEach(function(filepath) {
                 var charactersLength = grunt.file.read(filepath).length;
 
-                grunt.log[charactersLength > options.alertIfHigher ? 'errorlns' : 'writeln'](filepath + ' :: ' + charactersLength + ' character ' + ((charactersLength > 0) ? 's': ''));
+                grunt.log[charactersLength > options.alertIfHigher ? 'errorlns' : 'writeln'](filepath + ' :: ' + charactersLength + ' character' + ((charactersLength > 0) ? 's': ''));
                 errorsGrunt = errorsGrunt || charactersLength > options.alertIfHigher;
             });
         });
